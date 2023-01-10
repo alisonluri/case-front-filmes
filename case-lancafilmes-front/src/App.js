@@ -1,10 +1,9 @@
-import { Router } from "react-router-dom";
+import { Router } from "./router/Router";
 import { GlobalStyle, Page } from "./Styled";
 
 function App() {
   return (
     <div>
-        Funciona?
       <GlobalStyle />
       <Page>
         <Router />
