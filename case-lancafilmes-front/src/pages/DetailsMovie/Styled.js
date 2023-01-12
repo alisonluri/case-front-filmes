@@ -27,6 +27,9 @@ export const Cartaz = styled.img`
 `
 
 export const FilmDetail = styled.section`
+    display: flex;
+    flex-direction: column;
+    height: 528px;
     margin-top: 72px;
     margin-left: 33px;
     color: #fff;
@@ -35,6 +38,60 @@ export const FilmDetail = styled.section`
 export const Titulo = styled.h1`
     font-weight: 700;
     font-size: 32px;
+    margin-bottom: 8px;
+`
+
+export const Dados = styled.p`
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 16px;
+`
+
+export const Generos = styled.p`
+    font-weight: 400;
+    font-size: 18px;
+`
+
+export const Avalia = styled.p`
+    margin-bottom: 32px;
+`
+
+export const TituloSinopse = styled.h4`
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    `    
+
+export const Sinopse = styled.p`
+    width: 700px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #DDD;
+    margin-bottom: 8px;
+    margin-bottom: 24px;
+`
+
+export const Creditos = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    height: 180px;
+    overflow: hidden;
+    div{
+        h5{
+            font-size: 16px;
+            font-weight: 700;
+            width: 172px;
+            margin-right: 33px;
+        }
+        p{
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 23px;
+            width: 174px;
+            margin-right: 33px;
+        }
+    }
 `
 
 export const ElencoBox = styled.section`
@@ -97,12 +154,13 @@ export const TrailerBox = styled.section`
     flex-direction: column;
     width: 1440px;
     margin-top: 30px;
-    h2{
+    padding-left: 112px;
+    /* h2{
         margin-left: 112px;
     }
     div{
         margin-left: 112px;
-    }
+    } */
 `
 
 export const RecomendaBox = styled.section`
@@ -111,6 +169,9 @@ export const RecomendaBox = styled.section`
     width: 1440px;
     margin-top: 30px;
     h2{
+        margin-left: 112px;
+    }
+    iframe{
         margin-left: 112px;
     }
 `
