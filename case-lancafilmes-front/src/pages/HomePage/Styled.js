@@ -17,14 +17,23 @@ export const ListaFilmes = styled.section`
     justify-content: center;
     column-gap: 32px;
     padding: 0px 112px;
-`
+    `
 
-export const ButtonCat = styled.button`
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 16px;
-    color: #323232
+export const ContainerCat = styled.div`
+        display: flex;
+        gap: 8px;
+        width: 1100px;
+        flex-wrap: wrap;
+        justify-content: center;
+    `
+
+export const ButtonCat = styled.div`
+background-color: white;
+color: #323232;
+padding: 8px 16px;
+border-radius: 4px;
+font-weight: 700;
+font-size: 16px;    
 `
 
 export const Cabecalho = styled.header`
@@ -47,12 +56,4 @@ export const Cabecalho = styled.header`
         p{
             color: #fff
         }
-`
-
-export const ContainerCat = styled.div`
-    display: flex;
-    gap: 8px;
-    width: 1100px;
-    flex-wrap: wrap;
-    justify-content: center;
 `

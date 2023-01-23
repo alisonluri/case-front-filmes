@@ -1,14 +1,12 @@
 import React from 'react'
 import { Top} from './styled'
-import Vector from '../assets/Vector.png'
-import { useNavigate } from 'react-router-dom'
+import Logo from '../assets/Vector.png'
 
-const Topo = (onClick) => {
-    const navigate = useNavigate()
+const Topo = () => {
 
     return (
-        <Top>
-            <img src={Vector} alt='Logo' onClick={() => navigate(`${onClick}`)} />
+        <Top >
+            <img src={Logo} alt='Logotipo da página' />
         </Top>
     )
 }

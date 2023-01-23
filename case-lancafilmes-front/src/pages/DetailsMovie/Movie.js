@@ -3,13 +3,10 @@ import { Container, HeaderDeatail, Cartaz, FilmDetail, Titulo, ElencoBox, Elenco
 import { useParams } from "react-router-dom"
 import { API_KEY, BASE_URL, LANGUAGE } from "../../constants/urls"
 import useRequestData from "../../hooks/useRequestData"
-import { useNavigate
- } from "react-router-dom"
+
 // import DataAno from "../../constants/funcoesUteis,js"
 
 const Movie = () => {
-
-    const navigate = useNavigate()
     const {id} = useParams()
 
     const detalheFilme = useRequestData(`${BASE_URL}/${id}?${API_KEY}&${LANGUAGE}`)
@@ -23,9 +20,9 @@ const Movie = () => {
     const recoFilmesData = useRequestData(`${BASE_URL}/${id}/recommendations?${API_KEY}&${LANGUAGE}`)
 
     const classificaData = detalheFilmeDatas && detalheFilmeDatas.results && 
-    detalheFilmeDatas.results.filter((idioma) => {
-        if (idioma.iso_3166_1 === "BR")
-        return idioma
+    detalheFilmeDatas.results.filter((lancamento) => {
+        if (lancamento.iso_3166_1 === "BR" || lancamento.iso_3166_1 === "US")
+        return lancamento
     })
 
     const numeroEmHora = (num) => {
@@ -86,7 +83,7 @@ const Movie = () => {
 
     return(
         <Container>
-            <Top onClick={`/`} />
+            <Top />
                 {
                     detalheFilme && classificaData && creditosFilme && elencoFilme && trailer && recomenda &&
                     <div>

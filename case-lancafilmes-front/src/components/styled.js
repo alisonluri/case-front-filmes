@@ -14,5 +14,11 @@ export const Top = styled.div`
         }
 `
 
-
-
+export const ButtonCat = styled.div`
+    background-color: white;
+    color: #323232;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;    
+`
