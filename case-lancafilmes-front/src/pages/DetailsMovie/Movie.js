@@ -3,6 +3,7 @@ import { Container, HeaderDeatail, Cartaz, FilmDetail, Titulo, ElencoBox, Elenco
 import { useParams } from "react-router-dom"
 import { API_KEY, BASE_URL, LANGUAGE } from "../../constants/urls"
 import useRequestData from "../../hooks/useRequestData"
+import moment from "moment/moment"
 
 // import DataAno from "../../constants/funcoesUteis,js"
 
@@ -24,6 +25,7 @@ const Movie = () => {
         if (lancamento.iso_3166_1 === "BR" || lancamento.iso_3166_1 === "US")
         return lancamento
     })
+    console.log(classificaData)
 
     const numeroEmHora = (num) => {
         const horas = Math.floor(num/60)
@@ -40,7 +42,7 @@ const Movie = () => {
 
     const creditosFilme = creditosFilmeDatas && creditosFilmeDatas.crew && creditosFilmeDatas.crew.map((credit, index) => {
         return (
-            index<6 &&
+            index < 6 &&
             <div key={credit.credit_id}>
                     <h5>{credit.name}</h5>
                     <p>{credit.job}</p>
@@ -90,9 +92,9 @@ const Movie = () => {
                             <HeaderDeatail>
                                 <Cartaz src={`https://image.tmdb.org/t/p/original${detalheFilme.poster_path}`} alt={detalheFilme.title} />
                                 <FilmDetail>
-                                    <Titulo>{detalheFilme.title} ({classificaData[0].release_dates[0].release_date})</Titulo>
+                                    <Titulo>{detalheFilme.title} ({moment(classificaData[0].release_dates[0].release_date).format("YYYY")})</Titulo>
                                     <Dados>
-                                        {classificaData[0].release_dates[0].certification} anos - data (BR) &nbsp;-&nbsp; {generoLista} - {numeroEmHora(detalheFilme.runtime)}
+                                        {classificaData[1].release_dates[0].certification === "PG" || classificaData[1].release_dates[0].certification === "L" ? `L` : `${classificaData[1].release_dates[0].certification} anos`} - {moment(classificaData[1].release_dates[0].release_date).format("DD/MM/YYYY")} (BR) &nbsp;-&nbsp; {generoLista} - {numeroEmHora(detalheFilme.runtime)}
                                     </Dados>
                                     <Avalia>ícone - Avaliação dos Usuários</Avalia>
                                     <h4>Sinopse</h4>

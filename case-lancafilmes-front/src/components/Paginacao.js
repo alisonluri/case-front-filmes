@@ -32,8 +32,8 @@ function Pagination() {
                         <button className="page-link" onClick={() => setters.setCurrentPage(states.currentPage - 1)}>Previous</button>
                     </li>
                 )}
-                {pages.map(number => (
-                    <li key={number} className={`page-item ${states.currentPage === number ? 'active' : ''}`}>
+                {pages.map((number, index) => (
+                    index < 100 && <li key={number} className={`page-item ${states.currentPage === number ? 'active' : ''}`}>
                         <button onClick={() => setters.setCurrentPage(number)} className="page-link">
                             {number}
                         </button>
