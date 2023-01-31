@@ -1,16 +1,17 @@
 import Topo from "../../components/Top"
-import { Container, ListaFilmes, ContainerCat, Cabecalho } from "./Styled"
+import { Container, ListaFilmes, ContainerCat, Cabecalho, First, Last, Next, Numbers, Paginacao, Prev } from "./Styled"
 import MovieCard from "../../components/MovieCard"
 import React, { useContext, useEffect } from "react"
 import { LANGUAGE, BASE_URL, API_KEY, GENRE_URL } from "../../constants/urls"
 import useRequestData from "../../hooks/useRequestData"
 import { GlobalStateContext } from '../../global/GlobalStateContext'
-import Pagination from "../../components/Paginacao"
 import GenerosFilmes from "../../components/GenerosFilmes"
+import moment from "moment"
 
 const HomePage = () => {
     const { states, setters, functions } = useContext(GlobalStateContext)
 
+    const {setCurrentPage} = setters
 
     //Chamada da API
     const dataList = useRequestData(`${BASE_URL}/popular?${API_KEY}&${LANGUAGE}&page=${states.currentPage}`)
@@ -18,45 +19,28 @@ const HomePage = () => {
 
     const dataGenero = useRequestData(`${GENRE_URL}?${API_KEY}&${LANGUAGE}`)
 
-    //Tratamento de dados retornados da API para serem mostrados em tela
-
-    ///////////////////////////////
-    //O erro está  aqui.
-    
     useEffect(() => {
-        console.log("data genero" + dataGenero)
-        console.log("objeto setters" + setters)
-        
-        if (dataGenero && dataGenero.genres){
-            setters.setCategorias(dataGenero.genres.map((nome) => nome))
+
+        if (dataGenero && dataGenero.genres) {
+            setters.setCategorias = dataGenero.genres.map((nome) => nome)
         }
 
-    },[])
-
-
-
-    // dataGenero && dataGenero.genres && setters.setCategorias(dataGenero.genres.map((nome) => nome))
-
-    // dataGenero && dataGenero.genres && setters.setItens(dataGenero.genres)
-
-    //////////////////////////////
-
-    const filteredItems = states.selectedGeneros.length > 0
-        ? dataList.results.filter((movie)=>movie.genre_ids.every(generoId => states.selectedGeneros.includes(generoId)))
-        : dataList.results
+    }, [])
  
+    const filteredItems = states.selectedGeneros.length > 0
+        ? dataList.results.filter((movie) => movie.genre_ids.every(generoId => states.selectedGeneros.includes(generoId)))
+        : dataList.results
+
     const filmesList = filteredItems && filteredItems.map((movie) => {
-            return <MovieCard
-                cardInfo={movie}
-                key={movie.id}
-                title={movie.title}
-                date={movie.release_date}
-                idGenero={movie.genre_ids}
-                onClick={`/movie/${movie.id}`}
-            />
-        })
-    
-    
+        return <MovieCard
+            cardInfo={movie}
+            key={movie.id}
+            title={movie.title}
+            date={moment(movie.release_date).format("DD MMM YYYY")}
+            idGenero={movie.genre_ids}
+            onClick={`/movie/${movie.id}`}
+        />
+    })
 
     const filmesGenero = dataGenero && dataGenero.genres && dataGenero.genres.map((genere) => {
         return <GenerosFilmes
@@ -68,6 +52,15 @@ const HomePage = () => {
         />
 
     })
+
+    const pagesPagination = Array.from(Array(dataList.total_pages), (item, index) => {
+        return index < 10 &&
+            <Numbers key={index} value={index} onClick={() => (setCurrentPage(Number(index+1)))} isSelect={index+1 === states.currentPage}>
+                {index + 1}
+            </Numbers>
+    }).slice(0, 10)
+    console.log(states.currentPage)
+
     return (
         <Container>
             <div>
@@ -83,7 +76,22 @@ const HomePage = () => {
             <ListaFilmes>
                 {filmesList}
             </ListaFilmes>
-            <Pagination  />
+
+            <Paginacao>
+                {
+                    <First onClick={() => (setCurrentPage(1))}>Primeira</First>
+                }
+                {
+                    <Prev onClick={() => (setCurrentPage(states.currentPage === 1?states.currentPage:states.currentPage - 1))}>&lt;</Prev>
+                }
+                {pagesPagination}
+                {
+                    <Next onClick={() => (setCurrentPage(states.currentPage===10?states.currentPage:states.currentPage + 1))}>&gt;</Next>
+                }
+                {
+                    <Last onClick={() => (setCurrentPage(10))}>Última</Last>
+                }
+            </Paginacao>
         </Container>
     )
 }

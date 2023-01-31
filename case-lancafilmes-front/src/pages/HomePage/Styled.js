@@ -57,3 +57,40 @@ export const Cabecalho = styled.header`
             color: #fff
         }
 `
+
+export const Paginacao = styled.section`
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    color: #5c16c5;
+    margin-bottom: 50px;
+`
+export const First = styled.div`
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+`
+
+export const Prev = styled(First) `
+    &:hover{
+      background-color: transparent;
+      /* cursor: default; */
+    }
+`
+
+export const Numbers = styled(First)`
+
+    ${props => props.isSelect && {
+        color: "#191919",
+        background: "#e9e9e9",
+        padding: "0 5px"
+    }}
+`
+
+export const Next = styled(First)`
+
+`
+
+export const Last = styled(First)`
+
+`

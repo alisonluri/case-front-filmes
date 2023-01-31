@@ -12,6 +12,9 @@ export const MovieCardContainer = styled.div`
         cursor: pointer;
         box-shadow: rgba(255, 255, 255) 0px 13px 27px -5px, rgba(255, 255, 255) 0px 8px 16px -8px;
     }
+    p{
+        text-transform: uppercase;
+    }
     `
 
 export const TituloCard = styled.p`

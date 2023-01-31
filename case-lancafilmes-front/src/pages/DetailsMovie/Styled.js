@@ -206,6 +206,6 @@ export const Filme = styled.div`
     p{
        font-weight: 400;
        font-size: 16px;
-
+        text-transform: uppercase;
     }
 `

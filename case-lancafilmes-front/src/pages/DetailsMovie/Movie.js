@@ -1,9 +1,10 @@
 import Top from "../../components/Top"
-import { Container, HeaderDeatail, Cartaz, FilmDetail, Titulo, ElencoBox, Elenco, AtorBox, TrailerBox, RecomendaBox, FilmesReco, Filme, Sinopse, Dados, Generos, Avalia, Creditos } from "./Styled"
+import { Container, HeaderDeatail, Cartaz, FilmDetail, Titulo, ElencoBox, Elenco, AtorBox, TrailerBox, RecomendaBox, FilmesReco, Sinopse, Dados, Generos, Avalia, Creditos } from "./Styled"
 import { useParams } from "react-router-dom"
 import { API_KEY, BASE_URL, LANGUAGE } from "../../constants/urls"
 import useRequestData from "../../hooks/useRequestData"
 import moment from "moment/moment"
+import MovieCard from "../../components/MovieCard"
 
 // import DataAno from "../../constants/funcoesUteis,js"
 
@@ -75,11 +76,14 @@ const Movie = () => {
     const recomenda = recoFilmesData && recoFilmesData.results && recoFilmesData.results.map((recom, index) => {
         return (
             index < 6 &&
-                <Filme key={recom.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${recom.poster_path}`} alt={recom.title} />
-                    <h5>{recom.title}</h5>
-                    <p>{recom.release_date}</p>
-                </Filme>
+                <MovieCard
+                key={recom.id}
+                title={recom.title}
+                date={moment(recom.release_date).format("DD MMM YYYY")}
+                cardInfo={recom}
+                onClick={`/movie/${recom.id}`}
+
+                />
         )
     })
 

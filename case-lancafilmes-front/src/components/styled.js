@@ -20,5 +20,7 @@ export const ButtonCat = styled.div`
     padding: 8px 16px;
     border-radius: 4px;
     font-weight: 700;
-    font-size: 16px;    
+    font-size: 16px;
+    cursor: pointer;
+
 `

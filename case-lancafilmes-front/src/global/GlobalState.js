@@ -29,9 +29,9 @@ const GlobalState = props => {
     }
 
     const setters = {
+        setTotalPages,
         setCurrentPage,
         setPageNumbers,
-        setTotalPages,
         setPagesToShow,
         setSelectedGeneros,
         setItens,
