@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import botaofechar from '../../assets/botaofechar.png'
 
 export const Container = styled.div`
     display: flex;
@@ -25,6 +26,10 @@ export const ContainerCat = styled.div`
         width: 1100px;
         flex-wrap: wrap;
         justify-content: center;
+        .selected {
+            background: #d18000 url(${botaofechar}) no-repeat right center;
+            color: white;
+        }
     `
 
 export const ButtonCat = styled.div`
@@ -71,7 +76,7 @@ export const First = styled.div`
     cursor: pointer;
 `
 
-export const Prev = styled(First) `
+export const Prev = styled(First)`
     &:hover{
       background-color: transparent;
       /* cursor: default; */

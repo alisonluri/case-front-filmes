@@ -6,9 +6,10 @@ const GenerosFilmes = ({ id, name, selected, onClick }) => {
 
     return (
         <ButtonCat
-            className={`genero-button ${selected ? 'selected' : ''}`}
+            className={`${selected ? 'selected' : ''}`}
             onClick={() => onClick(id)}
         >
+            
             {name}
         </ButtonCat>
     )
