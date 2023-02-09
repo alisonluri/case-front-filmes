@@ -20,9 +20,6 @@ Tecnologias Utilizadas
 
 **For development just run:** `npm run start`
 
-## Prerequisites
-
-* [node](https://nodejs.org/en/)
 
 ### Especificações
 
