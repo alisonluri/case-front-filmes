@@ -15,7 +15,6 @@ Tecnologias Utilizadas
 1. Install npm dependencies: `npm install`
 
 2. Build: `npm run build`
-    - Link Surge: [`annoying-can.surge.sh`](https://annoying-can.surge.sh/)
 
 3. Run: `npm run start`
 
