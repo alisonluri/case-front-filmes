@@ -15,6 +15,7 @@ Tecnologias Utilizadas
 1. Install npm dependencies: `npm install`
 
 2. Build: `npm run build`
+    Link Surge: [detailed-force.surge.sh](https://detailed-force.surge.sh)
 
 3. Run: `npm run start`
 
