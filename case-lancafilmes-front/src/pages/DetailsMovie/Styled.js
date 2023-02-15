@@ -1,35 +1,52 @@
 import styled from "styled-components";
+import px2vw from "../../utils/px2vw";
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    align-items: center;
+    width: 100vw;
     margin: 0px;
-`
+    h2{
+        align-self: flex-start;
+        margin-left:${px2vw(112)};
+    }
+
+    `
+
 
 export const HeaderDeatail = styled.header`
     display: flex;
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;  
     height: 600px;
     margin-top: 56px;
     background-color: #2d0c5e;
+        ////////////// Responsividade /////////////////
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        }
 `
 
 export const Cartaz = styled.img`
-    width: 383px;
-    height: 574px;
+    width: ${px2vw(383)};
+    max-width: 383px;
+    min-width: 350px;
+    height: ${px2vw(574)};
+    max-height: 574px;
+    min-height: 500px;
     border-radius: 8px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    margin-top: 72px;
-    margin-left: 112px;
+    margin-top: ${px2vw(72)};
+    margin-left: ${px2vw(112)};
 `
 
 export const FilmDetail = styled.section`
     display: flex;
     flex-direction: column;
-    height: 528px;
+    height: 100%;
     margin-top: 72px;
     margin-left: 33px;
     color: #fff;
@@ -37,7 +54,7 @@ export const FilmDetail = styled.section`
 
 export const Titulo = styled.h1`
     font-weight: 700;
-    font-size: 32px;
+    font-size: calc(1.5rem + 1.7vw);
     margin-bottom: 8px;
 `
 
@@ -60,7 +77,7 @@ export const TituloSinopse = styled.h4`
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 8px;
-    `    
+    `
 
 export const Sinopse = styled.p`
     width: 700px;
@@ -95,7 +112,8 @@ export const Creditos = styled.section`
 `
 
 export const ElencoBox = styled.section`
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     margin-top: 30px;
     h2{
         margin-left: 112px;
@@ -117,6 +135,10 @@ export const AtorBox = styled.div`
         height: 12PX;
         border-radius: 10px;
     }
+            ////////////// Responsividade /////////////////
+            @media (max-width: 1000px) {
+        margin: 15px;
+        }
     `
 
 export const Elenco = styled.div`
@@ -149,37 +171,70 @@ export const Elenco = styled.div`
     }
 `
 
+
 export const TrailerBox = styled.section`
-    display: flex;
-    flex-direction: column;
-    width: 1440px;
+    position: relative;
+    height: 0;
+    padding-top: 25px;
+    padding-bottom: 56.25%;
+    width: 100%;
+    max-width: 1440px;
     margin-top: 30px;
-    padding-left: 112px;
-    /* h2{
-        margin-left: 112px;
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        max-width: 907px;
+        top: 0;
+        left: 112px;
+        height: 100%;
+        max-height: 510px;
     }
-    div{
-        margin-left: 112px;
-    } */
+            ////////////// Responsividade /////////////////
+            @media (max-width: 1000px) {
+                iframe {
+                    left: 10px;
+                    right: 10px;
+                }
+        }
+
+`
+
+export const TrailerVideo = styled.div`
+
+
 `
 
 export const RecomendaBox = styled.section`
     display: flex;
     flex-direction: column;
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     margin-top: 30px;
     h2{
         margin-left: 112px;
     }
-    iframe{
-        margin-left: 112px;
-    }
+
+                ////////////// Responsividade /////////////////
+                @media (max-width: 1000px) {
+        margin: 15px;
+        padding: 5px;
+        }
+        h2{
+            margin-left: 10px;
+        }
+        
 `
 
 export const FilmesReco = styled.div`
     display: flex;
     margin-left: 112px;
     gap: 32px;
+                ////////////// Responsividade /////////////////
+                @media (max-width: 1000px) {
+        margin: 15px;
+        padding: 5px;
+        }
     `
 
 export const Filme = styled.div`
